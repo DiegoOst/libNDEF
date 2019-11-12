@@ -257,9 +257,9 @@ uint16_t NDEF_IdentifyBuffer( sRecordInfo_t *pRecordStruct, uint8_t* pNDEF );
 uint16_t NDEF_ReadNDEF( uint8_t *pNDEF, I2C* mi2cChannel );
 uint16_t NDEF_WriteNDEF( uint16_t NDEF_Size, uint8_t *pNDEF, I2C* mi2cChannel );
 uint16_t NDEF_ClearNDEF(I2C* mi2cChannel);
-uint16_t NDEF_getNDEFSize(uint16_t* Size);
+uint16_t NDEF_getNDEFSize(uint16_t* Size, I2C* mi2cChannel);
 uint32_t NDEF_WriteRecord( sRecordInfo_t *pRecord, uint8_t* pNDEF, I2C* mi2cChannel );
-uint16_t NDEF_AppendRecord(sRecordInfo_t  *Record );
+uint16_t NDEF_AppendRecord(sRecordInfo_t  *Record, I2C* mi2cChannel );
 uint32_t NDEF_GetRecordLength( sRecordInfo_t *pRecord );
 
 #endif /* __LIB_NDEF_H */

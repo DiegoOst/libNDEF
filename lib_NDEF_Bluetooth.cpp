@@ -281,7 +281,7 @@ uint16_t NDEF_ReadBluetoothOOB( sRecordInfo_t *pRecord, Ndef_Bluetooth_OOB_t *pB
   * @retval NDEF_ERROR_MEMORY_INTERNAL  The Bluetooth OOB record cannot be appended due to memory size limitation.
   * @retval NDEF_ERROR                  The Bluetooth OOB record cannot be appended.
   */
-uint16_t NDEF_AppendBluetoothOOB( Ndef_Bluetooth_OOB_t *pBluetooth, char* RecordID )
+uint16_t NDEF_AppendBluetoothOOB( Ndef_Bluetooth_OOB_t *pBluetooth, char* RecordID, I2C* mi2cChannel )
 {
   sRecordInfo_t Record;
   uint16_t status;
@@ -512,7 +512,7 @@ uint16_t NDEF_AppendBluetoothOOB( Ndef_Bluetooth_OOB_t *pBluetooth, char* Record
   }
 
 
-  status = NDEF_AppendRecord(&Record);
+  status = NDEF_AppendRecord(&Record, mi2cChannel);
   if(status != NDEF_OK) return status;
   
   return NDEF_OK;

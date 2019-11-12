@@ -40,7 +40,7 @@ typedef struct
   char PackageName[80];
 }sAARInfo;
 	 	 
-uint16_t NDEF_AddAAR( const sAARInfo *pAARStruct );
+uint16_t NDEF_AddAAR( const sAARInfo *pAARStruct, I2C* mi2cChannel );
 
 
 

@@ -71,7 +71,7 @@ extern uint8_t NDEF_Buffer [];
   * @retval NDEF_ERROR_MEMORY_TAG : Size not compatible with memory.
   * @retval NDEF_ERROR_LOCKED : Tag locked, cannot be write.
   */
-uint16_t NDEF_AddAAR( const sAARInfo *pAARStruct )
+uint16_t NDEF_AddAAR( const sAARInfo *pAARStruct, I2C* mi2cChannel )
 {
   uint16_t status = NDEF_ERROR;
 
@@ -112,7 +112,7 @@ uint16_t NDEF_AddAAR( const sAARInfo *pAARStruct )
   AARrecord.PayloadBufferAdd = (uint8_t*)pAARStruct->PackageName;
   AARrecord.PayloadLength= strlen(pAARStruct->PackageName) ;
 
-  status = NDEF_AppendRecord(&AARrecord);
+  status = NDEF_AppendRecord(&AARrecord, mi2cChannel);
 
    return status;
 }

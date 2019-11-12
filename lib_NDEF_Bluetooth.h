@@ -190,7 +190,7 @@ typedef  struct {
 }  NDEF_EIR_t ;
 
 uint16_t NDEF_ReadBluetoothOOB( sRecordInfo_t *pRecordStruct, Ndef_Bluetooth_OOB_t *pBluetooth );
-uint16_t NDEF_AppendBluetoothOOB( Ndef_Bluetooth_OOB_t *pBluetooth, char* RecordID );
+uint16_t NDEF_AppendBluetoothOOB( Ndef_Bluetooth_OOB_t *pBluetooth, char* RecordID, I2C* mi2cChannel );
 void NDEF_PrepareBluetoothMessage(Ndef_Bluetooth_OOB_t  *pBluetooth, uint8_t *pNDEFMessage, uint16_t *size );
 uint32_t NDEF_GetBluetoothOOBLength( Ndef_Bluetooth_OOB_t *pBluetooth );
 
