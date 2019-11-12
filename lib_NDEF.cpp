@@ -52,7 +52,7 @@
   */
 
 
-static uint16_t NDEF_IsNDEFPresent( void );
+static uint16_t NDEF_IsNDEFPresent( I2C* mi2cChannel );
 static uint16_t NDEF_ParseRecordHeader( sRecordInfo_t *pRecordStruct );
 static void NDEF_ParseWellKnownType( sRecordInfo_t *pRecordStruct );
 static void NDEF_ParseMediaType( sRecordInfo_t *pRecordStruct );
@@ -380,7 +380,7 @@ uint16_t NDEF_IdentifyNDEF( sRecordInfo_t *pRecordStruct, uint8_t* pNDEF, I2C* m
   uint16_t SizeOfRecordHeader, TypeNbByte, PayloadLengthField, IDLengthField, IDNbByte;
 
   /* check NDEF present */
-  if( NDEF_IsNDEFPresent() != NDEF_OK )
+  if( NDEF_IsNDEFPresent(mi2cChannel) != NDEF_OK )
   {
     return NDEF_ERROR;
   }
@@ -518,7 +518,7 @@ uint16_t NDEF_AppendRecord(sRecordInfo_t  *Record, I2C* mi2cChannel )
   uint16_t NDEF_Size = 0;
   uint8_t* pData = NDEF_Buffer;
 
-  status = NDEF_getNDEFSize(&NDEF_Size);
+  status = NDEF_getNDEFSize(&NDEF_Size, mi2cChannel);
   if(status != NDEF_OK)  return status ;
 
   if(NDEF_Size != 0)
